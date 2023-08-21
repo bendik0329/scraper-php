@@ -61,7 +61,6 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
 $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
 print_r($resultCount);
 print_r($propertyCountPerPage);
-exit();
 
 if ($resultCount <= $propertyCountPerPage) {
   print_r("Hey bro");
