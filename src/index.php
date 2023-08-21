@@ -52,22 +52,20 @@ curl_close($curl);
 
 $htmlDomParser = HtmlDomParser::str_get_html($html);
 
-if ($htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length > 0) {
-  $resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
-  $resultCount = 0;
-  if (preg_match('/(\d+)/', $resultCountText, $matches)) {
-    $resultCount = $matches[1];
-  }
+$resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
+$resultCount = 0;
+if (preg_match('/(\d+)/', $resultCountText, $matches)) {
+  $resultCount = $matches[1];
+}
 
-  $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
+$propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
 
-  $result = array();
+$result = array();
 
-  if ($resultCount <= $propertyCountPerPage) {
-    $result = array_merge($result, scrateForeclosure());
-  } else {
-    print_r("die out bro");
-  }
+if ($resultCount <= $propertyCountPerPage) {
+  $result = array_merge($result, scrapeForeclosure());
+} else {
+  print_r("die out bro");
 }
 
 echo json_encode($result);

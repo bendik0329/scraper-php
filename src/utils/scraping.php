@@ -45,7 +45,7 @@ function scrapeProduct($productElement)
   );
 }
 
-function scrateForeclosure()
+function scrapeForeclosure()
 {
   $dataList = array();
 
@@ -67,16 +67,17 @@ function scrateForeclosure()
 
   $paginationHtmlDomParser = HtmlDomParser::str_get_html($pageHtml);
 
-  $propertyList = $paginationHtmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
+  $propertyElements = $paginationHtmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card div");
 
-  foreach($propertyList->childNodes as $propertyItem) {
-    $dataList[] = scrateItem($propertyItem->findOne("article.property-card div"));
+  foreach($propertyElements as $propertyElement) {
+    $dataList[] = scrapeItem($propertyElement);
   }
+  exit();
 
   return $dataList;
 }
 
-function scrateItem($element)
+function scrapeItem($element)
 {
   // get url
   $swipeFirstElement = $element->findone("#swipeable")->firstChild();
