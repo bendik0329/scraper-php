@@ -6,8 +6,6 @@ require_once  __DIR__ . '/utils/scraping.php';
 
 use voku\helper\HtmlDomParser;
 
-print_r("Hello Everybody");
-exit();
 // foreach (STATE_LIST as $key => $value) {
 //   $state = strtolower($key);
   
@@ -54,6 +52,8 @@ curl_close($curl);
 
 $htmlDomParser = HtmlDomParser::str_get_html($html);
 
+print_r($htmlDomParser);
+exit();
 $resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
 $resultCount = 0;
 if (preg_match('/(\d+)/', $resultCountText, $matches)) {
