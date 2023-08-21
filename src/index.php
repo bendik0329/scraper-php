@@ -52,8 +52,6 @@ curl_close($curl);
 
 $htmlDomParser = HtmlDomParser::str_get_html($html);
 
-print_r($htmlDomParser);
-exit();
 $resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
 $resultCount = 0;
 if (preg_match('/(\d+)/', $resultCountText, $matches)) {
@@ -63,6 +61,7 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
 $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
 print_r($propertyCountPerPage);
 exit();
+
 if ($resultCount <= $propertyCountPerPage) {
   print_r("Hey bro");
 }
