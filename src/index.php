@@ -8,7 +8,7 @@ use voku\helper\HtmlDomParser;
 
 // foreach (STATE_LIST as $key => $value) {
 //   $state = strtolower($key);
-  
+
 //   $filterState = array(
 //     "fsba" => ["value" => false],
 //     "fsbo" => ["value" => false],
@@ -52,48 +52,23 @@ curl_close($curl);
 
 $htmlDomParser = HtmlDomParser::str_get_html($html);
 
-$resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
-$resultCount = 0;
-if (preg_match('/(\d+)/', $resultCountText, $matches)) {
+if ($htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length > 0) {
+  $resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
+  $resultCount = 0;
+  if (preg_match('/(\d+)/', $resultCountText, $matches)) {
     $resultCount = $matches[1];
+  }
+
+  $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
+
+  $result = array();
+
+  if ($resultCount <= $propertyCountPerPage) {
+    $result = array_merge($result, scrateForeclosure());
+  } else {
+    print_r("die out bro");
+  }
 }
 
-$propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
-print_r($resultCount);
-print_r($propertyCountPerPage);
-
-if ($resultCount <= $propertyCountPerPage) {
-  print_r("Hey bro");
-}
+echo json_encode($result);
 exit();
-
-$i = 0;
-foreach($propertyList as $propertyItem) {
-  print_r("index:" . $i);
-  $i++;
-}
-exit();
-
-$propertyListArray = get_object_vars($propertyList);
-
-if ($resultCount <= count($propertyListArray)) {
-
-}
-print_r($propertyListArray);
-exit();
-
-// $i = 0;
-// foreach($propertyList as $propertyItem) {
-//   print_r("index:" . $i);
-//   $i++;
-// }
-// exit();
-// $highestPaginationNumber = preg_replace("/\D/", '', end($count));
-
-// print_r($highestPaginationNumber);
-// exit();
-// $result = array();
-// $result = array_merge($result, scrateForeclosure());
-
-// echo json_encode($result);
-// exit();

@@ -67,11 +67,10 @@ function scrateForeclosure()
 
   $paginationHtmlDomParser = HtmlDomParser::str_get_html($pageHtml);
 
-  // retrieving the list of products on the page
-  $productElements = $paginationHtmlDomParser->find("#search-page-list-container ul li article.property-card div");
+  $propertyList = $paginationHtmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
 
-  foreach ($productElements as $productElement) {
-    $dataList[] = scrateItem($productElement);
+  foreach($propertyList->childNodes as $propertyItem) {
+    $dataList[] = scrateItem($propertyItem->findOne("article.property-card div"));
   }
 
   return $dataList;
@@ -89,8 +88,6 @@ function scrateItem($element)
   foreach($swipeElements as $swipeElement) {
     $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
   }
-
-  $propertyDataElement = $element->findOne("div.property-card-data");
 
   return array(
     "url" => $url,
