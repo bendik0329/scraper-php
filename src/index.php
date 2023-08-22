@@ -66,16 +66,17 @@ $i = 0;
 
 $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
 
-if ($propertyCard && $propertyCard->hasChildNodes()) {
+if ($propertyCard && $propertyCard->childNodes->length > 0) {
   foreach ($propertyCard->childNodes as $propertyElement) {
     $swipeElements = $propertyElement->find("#swipeable");
+    var_dump($swipeElements);
     // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
     // $imgList = [];
     // foreach($swipeElements->childNodes as $swipeElement) {
     //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
     // }
-    var_dump($swipeElements);
+    // var_dump($swipeElements);
     // var_dump($url);
     // var_dump($imgList);
     // $result[] = scrapeItem($propertyElement);
