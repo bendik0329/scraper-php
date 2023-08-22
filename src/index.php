@@ -80,6 +80,7 @@ if ($html !== false) {
 
     print_r("index->>" . $i);
     print_r("url->>" . $url);
+    print_r("\n");
 
     $i++;
     // $swipeElements = $propertyElement->findOne("#swipeable");
