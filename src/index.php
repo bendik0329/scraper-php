@@ -70,7 +70,7 @@ if ($html !== false) {
   // if ($propertyCard && $propertyCard->childNodes->length > 0) {
   $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
   foreach ($propertyElements as $propertyElement) {
-    print_r($propertyElement->getAttribute("data-text"));
+    print_r($propertyElement->getAttribute("data-test"));
     // $swipeElements = $propertyElement->find("div#swipeable > div");
     // $url = $swipeElements->findOne("a")->getAttribute("href");
 
