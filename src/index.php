@@ -66,12 +66,15 @@ $i = 0;
 
 $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
 
-foreach ($propertyCard->childNodes as $propertyElement) {
-  print_r("index->>" . $i);
-  print_r($propertyElement);
-  print_r("\n");
-  $i++;
+if ($propertyCard && $propertyCard->childNodes->length > 0) {
+  foreach ($propertyCard->childNodes as $propertyElement) {
+    print_r("index->>" . $i);
+    print_r($propertyElement);
+    print_r("\n");
+    $i++;
+  }
 }
+
 exit();
 // $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
 // foreach($propertyElements as $propertyElement) {
