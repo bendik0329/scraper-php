@@ -50,6 +50,8 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 $html = curl_exec($curl);
 curl_close($curl);
 
+print_r($html);
+exit();
 // sleep(10);
 
 if ($html !== false) {
