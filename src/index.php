@@ -58,9 +58,32 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
   $resultCount = $matches[1];
 }
 
-print_r($resultCount);
-exit();
+$result = array();
+$i = 0;
 
+$propertyElements = $paginationHtmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card");
+foreach($propertyElements as $propertyElement) {
+  // $result[] = scrapeItem($propertyElement);
+  print_r("index->>" . $i . "\n");
+}
+
+function scrapeItem($propertyElement) {
+  // get url
+  $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
+  $url = $swipeFirstElement->findOne("a")->getAttribute("href");
+
+  // get image list
+  $imgList = [];
+  $swipeElements = $propertyElement->find("#swipeable div");
+  foreach($swipeElements as $swipeElement) {
+    $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
+  }
+
+  return array(
+    "url" => $url,
+    "images" => $imgList,
+  );
+}
 // $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
 
 // $result = array();
