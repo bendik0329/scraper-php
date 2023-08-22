@@ -64,32 +64,47 @@ print_r("\n");
 $result = array();
 $i = 0;
 
-$propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
-foreach($propertyElements as $propertyElement) {
-  // $result[] = scrapeItem($propertyElement);
+$propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
+
+foreach ($propertyCard->childNodes as $propertyElement) {
   print_r("index->>" . $i);
   print_r($propertyElement);
   print_r("\n");
   $i++;
 }
+exit();
+// $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
+// foreach($propertyElements as $propertyElement) {
+//   // $result[] = scrapeItem($propertyElement);
+//   print_r("index->>" . $i);
+//   print_r($propertyElement);
+//   print_r("\n");
+//   $i++;
+// }
 
-function scrapeItem($propertyElement) {
-  // get url
-  $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
-  $url = $swipeFirstElement->findOne("a")->getAttribute("href");
+// function scrapeItem($propertyElement) {
+//   // get url
+//   $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
+//   $url = $swipeFirstElement->findOne("a")->getAttribute("href");
 
-  // get image list
-  $imgList = [];
-  $swipeElements = $propertyElement->find("#swipeable div");
-  foreach($swipeElements as $swipeElement) {
-    $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
-  }
+//   // get image list
+//   $imgList = [];
+//   $swipeElements = $propertyElement->find("#swipeable div");
+//   foreach($swipeElements as $swipeElement) {
+//     $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
+//   }
 
-  return array(
-    "url" => $url,
-    "images" => $imgList,
-  );
-}
+//   return array(
+//     "url" => $url,
+//     "images" => $imgList,
+//   );
+// }
+
+
+
+
+
+
 // $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
 
 // $result = array();
