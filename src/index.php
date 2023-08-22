@@ -50,9 +50,7 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 $html = curl_exec($curl);
 curl_close($curl);
 
-print_r($html);
-exit();
-// sleep(10);
+sleep(10);
 
 if ($html !== false) {
   $htmlDomParser = HtmlDomParser::str_get_html($html);
