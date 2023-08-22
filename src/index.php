@@ -37,7 +37,7 @@ use voku\helper\HtmlDomParser;
 $url = 'https://www.zillow.com/wy/foreclosures/';
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_PROXY, 'http://60cb4030eb5826662d404f6cb6bb10040a3f775a:js_render=true&wait_for=.photo-cards@proxy.zenrows.com:8001');
+curl_setopt($curl, CURLOPT_PROXY, 'http://60cb4030eb5826662d404f6cb6bb10040a3f775a:js_render=true@proxy.zenrows.com:8001');
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
