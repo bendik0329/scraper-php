@@ -64,19 +64,19 @@ print_r("\n");
 $result = array();
 $i = 0;
 
-if ($propertyCard && $propertyCard->childNodes->length > 0) {
-  $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
-  foreach($propertyElements as $propertyElement)   {
-    $swipeElements = $propertyElement->findOne("#swipeable");
-    $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+// if ($propertyCard && $propertyCard->childNodes->length > 0) {
+$propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
+foreach ($propertyElements as $propertyElement) {
+  $swipeElements = $propertyElement->findOne("#swipeable");
+  $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
-    $imgList = [];
-    foreach($swipeElements->childNodes as $swipeElement) {
-      $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
-    }
-    $result[] = scrapeItem($propertyElement);
+  $imgList = [];
+  foreach ($swipeElements->childNodes as $swipeElement) {
+    $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
   }
+  $result[] = scrapeItem($propertyElement);
 }
+// }
 
 print_r($result);
 exit();
@@ -111,7 +111,8 @@ exit();
 //   $i++;
 // }
 
-function scrapeItem($propertyElement) {
+function scrapeItem($propertyElement)
+{
   // get url
   $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
   $url = $swipeFirstElement->findOne("a")->getAttribute("href");
@@ -119,7 +120,7 @@ function scrapeItem($propertyElement) {
   // get image list
   $imgList = [];
   $swipeElements = $propertyElement->find("#swipeable div");
-  foreach($swipeElements as $swipeElement) {
+  foreach ($swipeElements as $swipeElement) {
     $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
   }
 
