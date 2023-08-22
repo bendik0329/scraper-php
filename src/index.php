@@ -67,18 +67,20 @@ $i = 0;
 // if ($propertyCard && $propertyCard->childNodes->length > 0) {
 $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
 foreach ($propertyElements as $propertyElement) {
-  $swipeElements = $propertyElement->findOne("#swipeable");
-  $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+  print_r($i);
+  print_r($propertyElement);
+  // $swipeElements = $propertyElement->findOne("#swipeable");
+  // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
-  $imgList = [];
-  foreach ($swipeElements->childNodes as $swipeElement) {
-    $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
-  }
-  $result[] = scrapeItem($propertyElement);
+  // $imgList = [];
+  // foreach ($swipeElements->childNodes as $swipeElement) {
+  //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+  // }
+  // $result[] = scrapeItem($propertyElement);
 }
 // }
 
-print_r($result);
+// print_r($result);
 exit();
 
 // $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
