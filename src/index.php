@@ -68,13 +68,11 @@ $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-lis
 
 if ($propertyCard && $propertyCard->childNodes->length > 0) {
   foreach ($propertyCard->childNodes as $propertyElement) {
-    print_r("index->>" . $i);
-    print_r($propertyElement);
-    print_r("\n");
-    $i++;
+    $result[] = scrapeItem($propertyElement);
   }
 }
 
+print_r($result);
 exit();
 // $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
 // foreach($propertyElements as $propertyElement) {
@@ -85,23 +83,23 @@ exit();
 //   $i++;
 // }
 
-// function scrapeItem($propertyElement) {
-//   // get url
-//   $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
-//   $url = $swipeFirstElement->findOne("a")->getAttribute("href");
+function scrapeItem($propertyElement) {
+  // get url
+  $swipeFirstElement = $propertyElement->findone("#swipeable")->firstChild();
+  $url = $swipeFirstElement->findOne("a")->getAttribute("href");
 
-//   // get image list
-//   $imgList = [];
-//   $swipeElements = $propertyElement->find("#swipeable div");
-//   foreach($swipeElements as $swipeElement) {
-//     $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
-//   }
+  // get image list
+  $imgList = [];
+  $swipeElements = $propertyElement->find("#swipeable div");
+  foreach($swipeElements as $swipeElement) {
+    $imgList[] = $swipeElement->findOne("a div picture img")->getAttribute("src");
+  }
 
-//   return array(
-//     "url" => $url,
-//     "images" => $imgList,
-//   );
-// }
+  return array(
+    "url" => $url,
+    "images" => $imgList,
+  );
+}
 
 
 
