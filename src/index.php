@@ -58,15 +58,18 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
   $resultCount = $matches[1];
 }
 
-$propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
-
-$result = array();
-
-if ($resultCount <= $propertyCountPerPage) {
-  $result = array_merge($result, scrapeForeclosure());
-} else {
-  print_r("die out bro");
-}
-
-echo json_encode($result);
+print_r($resultCount);
 exit();
+
+// $propertyCountPerPage = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards")->childNodes->length;
+
+// $result = array();
+
+// if ($resultCount <= $propertyCountPerPage) {
+//   $result = array_merge($result, scrapeForeclosure());
+// } else {
+//   print_r("die out bro");
+// }
+
+// echo json_encode($result);
+// exit();
