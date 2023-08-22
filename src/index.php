@@ -70,6 +70,11 @@ foreach ($propertyElements as $propertyElement) {
   print_r($i);
   print_r($propertyElement);
   $i++;
+
+  $swipeElements = $propertyElement->find("#swipeable > div");
+  foreach($swipeElements as $swipeElement) {
+    print_r($swipeElement);
+  }
   // $swipeElements = $propertyElement->findOne("#swipeable");
   // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
