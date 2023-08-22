@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once  __DIR__ . '/constants.php';
-require_once  __DIR__ . '/utils/scraping.php';
+// require_once  __DIR__ . '/utils/scraping.php';
 
 use voku\helper\HtmlDomParser;
 
