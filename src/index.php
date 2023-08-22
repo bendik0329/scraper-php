@@ -50,7 +50,7 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 $html = curl_exec($curl);
 curl_close($curl);
 
-sleep(10);
+// sleep(10);
 
 if ($html !== false) {
   $htmlDomParser = HtmlDomParser::str_get_html($html);
@@ -74,6 +74,9 @@ if ($html !== false) {
       $swipeElements = $propertyElement->find("div#swipeable > div");
       $url = $swipeElements->findOne("a")->getAttribute("href");
       print_r("url->>" . $url);
+      print_r("index->>" . $i);
+      print_r("\n");
+      $i++;
     }
     
     // $url = $swipeElements->findOne("a")->getAttribute("href");
@@ -83,11 +86,7 @@ if ($html !== false) {
     //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
     // }
 
-    print_r("index->>" . $i);
-    // print_r("url->>" . $url);
-    print_r("\n");
-
-    $i++;
+    
     // $swipeElements = $propertyElement->findOne("#swipeable");
     // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
