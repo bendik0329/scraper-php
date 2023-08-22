@@ -73,14 +73,13 @@ if ($html !== false) {
     $swipeElements = $propertyElement->find("div#swipeable > div");
     $url = $swipeElements->findOne("a")->getAttribute("href");
 
-    $imgList = [];
-    foreach ($swipeElements as $swipeElement) {
-      $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
-    }
+    // $imgList = [];
+    // foreach ($swipeElements as $swipeElement) {
+    //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+    // }
 
     print_r("index->>" . $i);
-    print_r($url);
-    print_r($imgList);
+    print_r("url->>" . $url);
 
     $i++;
     // $swipeElements = $propertyElement->findOne("#swipeable");
