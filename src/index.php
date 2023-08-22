@@ -64,24 +64,43 @@ print_r("\n");
 $result = array();
 $i = 0;
 
-$propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
-
 if ($propertyCard && $propertyCard->childNodes->length > 0) {
-  foreach ($propertyCard->childNodes as $propertyElement) {
-    $swipeElements = $propertyElement->find("#swipeable");
-    var_dump($swipeElements);
-    // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+  $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
+  foreach($propertyElements as $propertyElement)   {
+    $swipeElements = $propertyElement->findOne("#swipeable");
+    $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
-    // $imgList = [];
-    // foreach($swipeElements->childNodes as $swipeElement) {
-    //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
-    // }
-    // var_dump($swipeElements);
-    // var_dump($url);
-    // var_dump($imgList);
-    // $result[] = scrapeItem($propertyElement);
+    $imgList = [];
+    foreach($swipeElements->childNodes as $swipeElement) {
+      $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+    }
+    $result[] = scrapeItem($propertyElement);
   }
 }
+
+print_r($result);
+exit();
+
+// $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
+
+// $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
+
+// if ($propertyCard && $propertyCard->childNodes->length > 0) {
+//   foreach ($propertyCard->childNodes as $propertyElement) {
+//     $swipeElements = $propertyElement->findOne("#swipeable");
+//     var_dump($swipeElements);
+//     $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+
+//     $imgList = [];
+//     foreach($swipeElements->childNodes as $swipeElement) {
+//       $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+//     }
+//     var_dump($swipeElements);
+//     var_dump($url);
+//     var_dump($imgList);
+//     $result[] = scrapeItem($propertyElement);
+//   }
+// }
 
 // $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
 // foreach($propertyElements as $propertyElement) {
