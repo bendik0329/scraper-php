@@ -69,6 +69,7 @@ $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
 foreach ($propertyElements as $propertyElement) {
   print_r($i);
   print_r($propertyElement);
+  $i++;
   // $swipeElements = $propertyElement->findOne("#swipeable");
   // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
