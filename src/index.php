@@ -64,7 +64,7 @@ print_r("\n");
 $result = array();
 $i = 0;
 
-$propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card");
+$propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
 foreach($propertyElements as $propertyElement) {
   // $result[] = scrapeItem($propertyElement);
   print_r("index->>" . $i);
