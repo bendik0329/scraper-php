@@ -71,7 +71,7 @@ if ($html !== false) {
   $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
   foreach ($propertyElements as $propertyElement) {
     if (!$propertyElement->getAttribute("data-test")) {
-      $swipeElements = $propertyElement->find("div#swipeable > div");
+      $swipeElements = $propertyElement->find("#swipeable > div");
       $url = $swipeElements->findOne("a")->getAttribute("href");
       print_r("url->>" . $url);
       print_r("index->>" . $i);
