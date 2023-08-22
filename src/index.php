@@ -65,6 +65,7 @@ $propertyElements = $htmlDomParser->find("#search-page-list-container .result-li
 foreach($propertyElements as $propertyElement) {
   // $result[] = scrapeItem($propertyElement);
   print_r("index->>" . $i . "\n");
+  $i++;
 }
 
 function scrapeItem($propertyElement) {
