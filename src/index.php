@@ -58,13 +58,17 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
   $resultCount = $matches[1];
 }
 
+print_r($resultCount);
+print_r("\n");
+
 $result = array();
 $i = 0;
 
 $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card");
 foreach($propertyElements as $propertyElement) {
   // $result[] = scrapeItem($propertyElement);
-  print_r("index->>" . $i . "\n");
+  print_r("index->>" . $i);
+  print_r("\n");
   $i++;
 }
 
