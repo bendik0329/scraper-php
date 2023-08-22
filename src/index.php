@@ -67,15 +67,19 @@ $i = 0;
 // if ($propertyCard && $propertyCard->childNodes->length > 0) {
 $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
 foreach ($propertyElements as $propertyElement) {
-  print_r($i);
-  print_r($propertyElement);
-  $i++;
-
   $swipeElements = $propertyElement->find("#swipeable > div");
+  $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+  
+  $imgList = [];
   foreach($swipeElements as $swipeElement) {
-    $url = $swipeElement->findOne("a.carousel-photo")->getAttribute("href");
-    print_r($url);
+    $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
   }
+
+  print_r("index->>" . $i);
+  print_r($url);
+  print_r($imgList);
+  
+  $i++;
   // $swipeElements = $propertyElement->findOne("#swipeable");
   // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
 
