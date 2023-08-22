@@ -61,7 +61,7 @@ if (preg_match('/(\d+)/', $resultCountText, $matches)) {
 $result = array();
 $i = 0;
 
-$propertyElements = $paginationHtmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card");
+$propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li article.property-card");
 foreach($propertyElements as $propertyElement) {
   // $result[] = scrapeItem($propertyElement);
   print_r("index->>" . $i . "\n");
