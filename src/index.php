@@ -73,7 +73,7 @@ if ($html !== false) {
     if (!$propertyElement->getAttribute("data-test")) {
       $swipeElements = $propertyElement->find("#swipeable > div");
       if ($i >= 9) {
-        print_r($propertyElement);
+        print_r($propertyElement->html);
         print_r($swipeElements);
       }
       $url = $swipeElements->findOne("a")->getAttribute("href");
