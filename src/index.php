@@ -68,7 +68,8 @@ $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-lis
 
 if ($propertyCard && $propertyCard->childNodes->length > 0) {
   foreach ($propertyCard->childNodes as $propertyElement) {
-    var_dump($propertyElement);
+    $swipeElements = $propertyElement->find("#swipeable");
+    var_dump($swipeElements);
     // $result[] = scrapeItem($propertyElement);
   }
 }
