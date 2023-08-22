@@ -67,8 +67,8 @@ $i = 0;
 // if ($propertyCard && $propertyCard->childNodes->length > 0) {
 $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
 foreach ($propertyElements as $propertyElement) {
-  $swipeElements = $propertyElement->find("#swipeable > div");
-  $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+  $swipeElements = $propertyElement->find("div#swipeable > div");
+  $url = $swipeElements->findOne("a")->getAttribute("href");
   
   $imgList = [];
   foreach($swipeElements as $swipeElement) {
