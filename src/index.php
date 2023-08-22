@@ -50,49 +50,54 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 $html = curl_exec($curl);
 curl_close($curl);
 
-$htmlDomParser = HtmlDomParser::str_get_html($html);
+sleep(3);
 
-$resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
-$resultCount = 0;
-if (preg_match('/(\d+)/', $resultCountText, $matches)) {
-  $resultCount = $matches[1];
-}
+if ($html !== false) {
+  $htmlDomParser = HtmlDomParser::str_get_html($html);
 
-print_r($resultCount);
-print_r("\n");
-
-$result = array();
-$i = 0;
-
-// if ($propertyCard && $propertyCard->childNodes->length > 0) {
-$propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
-foreach ($propertyElements as $propertyElement) {
-  $swipeElements = $propertyElement->find("div#swipeable > div");
-  $url = $swipeElements->findOne("a")->getAttribute("href");
-  
-  $imgList = [];
-  foreach($swipeElements as $swipeElement) {
-    $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+  $resultCountText = $htmlDomParser->findOne(".search-page-list-header .search-subtitle span.result-count")->text;
+  $resultCount = 0;
+  if (preg_match('/(\d+)/', $resultCountText, $matches)) {
+    $resultCount = $matches[1];
   }
 
-  print_r("index->>" . $i);
-  print_r($url);
-  print_r($imgList);
-  
-  $i++;
-  // $swipeElements = $propertyElement->findOne("#swipeable");
-  // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+  print_r($resultCount);
+  print_r("\n");
 
-  // $imgList = [];
-  // foreach ($swipeElements->childNodes as $swipeElement) {
-  //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+  $result = array();
+  $i = 0;
+
+  // if ($propertyCard && $propertyCard->childNodes->length > 0) {
+  $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
+  foreach ($propertyElements as $propertyElement) {
+    $swipeElements = $propertyElement->find("div#swipeable > div");
+    $url = $swipeElements->findOne("a")->getAttribute("href");
+
+    $imgList = [];
+    foreach ($swipeElements as $swipeElement) {
+      $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+    }
+
+    print_r("index->>" . $i);
+    print_r($url);
+    print_r($imgList);
+
+    $i++;
+    // $swipeElements = $propertyElement->findOne("#swipeable");
+    // $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+
+    // $imgList = [];
+    // foreach ($swipeElements->childNodes as $swipeElement) {
+    //   $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+    // }
+    // $result[] = scrapeItem($propertyElement);
+  }
   // }
-  // $result[] = scrapeItem($propertyElement);
-}
-// }
 
-// print_r($result);
-exit();
+  // print_r($result);
+  exit();
+}
+
 
 // $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
 
