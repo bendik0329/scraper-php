@@ -69,7 +69,15 @@ $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-lis
 if ($propertyCard && $propertyCard->childNodes->length > 0) {
   foreach ($propertyCard->childNodes as $propertyElement) {
     $swipeElements = $propertyElement->find("#swipeable");
+    $url = $swipeElements->firstChild()->findOne("a")->getAttribute("href");
+
+    $imgList = [];
+    foreach($swipeElements->childNodes as $swipeElement) {
+      $imgList[] = $swipeElement->findOne("picture img")->getAttribute("src");
+    }
     var_dump($swipeElements);
+    var_dump($url);
+    var_dump($imgList);
     // $result[] = scrapeItem($propertyElement);
   }
 }
