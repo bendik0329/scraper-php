@@ -50,7 +50,7 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 $html = curl_exec($curl);
 curl_close($curl);
 
-sleep(3);
+sleep(10);
 
 if ($html !== false) {
   $htmlDomParser = HtmlDomParser::str_get_html($html);
@@ -70,8 +70,9 @@ if ($html !== false) {
   // if ($propertyCard && $propertyCard->childNodes->length > 0) {
   $propertyElements = $htmlDomParser->find("#grid-search-results > ul > li");
   foreach ($propertyElements as $propertyElement) {
-    $swipeElements = $propertyElement->find("div#swipeable > div");
-    $url = $swipeElements->findOne("a")->getAttribute("href");
+    print_r($propertyElement->getAttribute("class"));
+    // $swipeElements = $propertyElement->find("div#swipeable > div");
+    // $url = $swipeElements->findOne("a")->getAttribute("href");
 
     // $imgList = [];
     // foreach ($swipeElements as $swipeElement) {
@@ -79,7 +80,7 @@ if ($html !== false) {
     // }
 
     print_r("index->>" . $i);
-    print_r("url->>" . $url);
+    // print_r("url->>" . $url);
     print_r("\n");
 
     $i++;
