@@ -67,14 +67,12 @@ $i = 0;
 $propertyCard = $htmlDomParser->findOne("#search-page-list-container .result-list-container ul.photo-cards");
 
 if ($propertyCard && $propertyCard->childNodes->length > 0) {
-  foreach ($propertyCard->childNodes as $child) {
-    $propertyElement = HtmlDomParser::str_get_html($child);
-    $result[] = scrapeItem($propertyElement);
+  foreach ($propertyCard->childNodes as $propertyElement) {
+    var_dump($propertyElement);
+    // $result[] = scrapeItem($propertyElement);
   }
 }
 
-print_r($result);
-exit();
 // $propertyElements = $htmlDomParser->find("#search-page-list-container .result-list-container ul.photo-cards li.gTOWtl");
 // foreach($propertyElements as $propertyElement) {
 //   // $result[] = scrapeItem($propertyElement);
