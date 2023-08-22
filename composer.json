@@ -3,7 +3,8 @@
     "description": "A simple scraper in PHP based on the Simple HTML DOM library",
     "require": {
         "voku/simple_html_dom": "^4.8",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "facebook/webdriver": "^1.7"
     },
     "authors": [
         {
